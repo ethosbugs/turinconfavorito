@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tu Rincón Favorito · Cocina ecuatoriana en Granollers</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&family=Josefin+Sans:wght@400;600&display=swap">
+<style>
+:root{--yellow:#F7CB3B;--teal:#86CFC9;--blue:#2A5FA8;--red:#D6402F;--ink:#141414;--cream:#F6F1E7;--wood:#C79A5E;
+--bg:var(--yellow);--fg:var(--ink);--bar:var(--cream);--card:var(--cream);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--card:#1d1d1d;--bar:#1d1d1d;--fg:#f4efe4}}
+:root[data-theme="dark"]{color-scheme:dark;--card:#1d1d1d;--bar:#1d1d1d;--fg:#f4efe4}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.55 "Josefin Sans",system-ui,sans-serif;padding-bottom:70px}
+.dk{color:var(--ink)}
+h1,h2,h3{font-family:Comfortaa,"Trebuchet MS",sans-serif;margin:0;line-height:.95}
+.hero{background:var(--yellow);color:var(--ink);overflow:hidden;padding:2vw 1vw 0}
+.hero h1{font-weight:700;text-transform:uppercase;font-size:clamp(44px,10.2vw,170px);letter-spacing:.01em;text-align:center;line-height:.9;animation:drop .9s cubic-bezier(.2,.9,.2,1) both}
+.hero h1 span{display:block}
+@keyframes drop{from{transform:translateY(-40px);opacity:0}to{transform:none;opacity:1}}
+.facade{display:block;width:min(1100px,96%);margin:1.5vw auto 0}
+.facade .ln{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.4s .5s ease forwards}
+.facade .fill{opacity:0;animation:pop .6s 2.2s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{opacity:1}}
+.status{position:absolute;right:16px;top:calc(12px + env(safe-area-inset-top,0px));font:600 14px "Josefin Sans";background:var(--ink);color:var(--cream);padding:6px 14px;border-radius:99px}
+.status i{display:inline-block;width:9px;height:9px;border-radius:50%;background:#888;margin-right:7px}
+.status.open i{background:#4ADE80}
+.flag{height:14px;background:linear-gradient(var(--yellow) 50%,var(--blue) 50% 75%,var(--red) 75%)}
+section{padding:72px max(20px,5vw)}
+.wrap{max-width:1050px;margin:0 auto}
+h2{font-size:clamp(34px,6vw,76px);font-weight:700;margin-bottom:28px}
+.teal{background:var(--teal);color:var(--ink)}
+.dark{background:var(--ink);color:var(--cream)}
+.intro{font-size:clamp(20px,2.6vw,28px);max-width:30em}
+.dishes{display:flex;flex-wrap:wrap;gap:12px;margin:0;padding:0;list-style:none}
+.dishes li{font:700 clamp(17px,2.2vw,24px) Comfortaa;border:3px solid var(--ink);border-radius:99px;padding:10px 22px;background:var(--cream);color:var(--ink);transition:transform .25s,background .25s}
+.dishes li:hover{transform:rotate(-3deg) scale(1.06)}
+.dishes li:nth-child(3n+1):hover{background:var(--yellow)}
+.dishes li:nth-child(3n+2):hover{background:var(--blue);color:#fff}
+.dishes li:nth-child(3n):hover{background:var(--red);color:#fff}
+.star{background:var(--yellow)!important}
+.menu{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;margin-top:44px;background:var(--ink);color:var(--cream);border-radius:28px;padding:28px 36px;border-bottom:14px solid var(--red)}
+.menu b{font:700 clamp(54px,9vw,110px) Comfortaa;color:var(--yellow);line-height:1}
+.menu p{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.card{background:var(--card);color:var(--fg);border-radius:22px;padding:26px}
+.card h3{font-size:26px;margin-bottom:12px}
+.card ul{margin:0;padding-left:20px}
+.card li{margin:6px 0}
+.score{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:30px}
+.score b{font:700 clamp(70px,12vw,150px) Comfortaa;color:var(--yellow);line-height:1}
+.hours{width:100%;border-collapse:collapse;font-size:22px}
+.hours td{padding:12px 0;border-bottom:2px solid var(--ink)}
+.hours td:last-child{text-align:right;font-weight:600}
+.hours tr.today{background:var(--yellow);font-weight:600}
+.hours tr.today td{padding-inline:12px}
+.hours .off{opacity:.55}
+.btn{display:inline-block;font:700 18px Comfortaa;background:var(--ink);color:var(--cream);padding:14px 28px;border-radius:99px;text-decoration:none;margin:6px 10px 6px 0;transition:background .25s,transform .25s}
+.btn:hover,.btn:focus-visible{background:var(--red);transform:translateY(-3px)}
+.btn.alt{background:var(--yellow);color:var(--ink)}
+.btn.alt:hover{background:var(--blue);color:#fff}
+.contact{background:var(--blue);color:#fff}
+.contact h2{color:var(--yellow)}
+footer{text-align:center;padding:26px;font-size:14px;background:var(--ink);color:var(--cream)}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--bar);color:var(--fg);display:flex;gap:clamp(14px,3.6vw,52px);justify-content:center;flex-wrap:wrap;padding:14px 16px calc(14px + env(safe-area-inset-bottom,0px));border-top:2px solid var(--ink)}
+nav a{color:inherit;text-decoration:none;font:600 13px "Josefin Sans";letter-spacing:.2em;text-transform:uppercase}
+nav a:hover,nav a:focus-visible{color:var(--red);outline:none}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+@media (max-width:640px){.menu{grid-template-columns:1fr;text-align:center}section{padding:52px 20px}nav a{letter-spacing:.1em;font-size:11px}.status{position:static;display:inline-block;margin:10px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.facade .ln{stroke-dashoffset:0}.facade .fill{opacity:1}}
+</style>
+</head>
+<body>
+<header class="hero" id="inicio" style="position:relative">
+ <div class="status" id="status"><i></i><span>Granollers</span></div>
+ <h1><span>Tu Rincón</span><span>Favorito</span></h1>
+ <svg class="facade" viewBox="0 0 1000 400" role="img" aria-label="Dibujo de la fachada del restaurante con el cartel Bar Restaurant Tu Rincón Favorito y las banderas de Ecuador">
+  <g class="fill">
+   <rect x="320" y="150" width="360" height="62" rx="4" fill="#141414"/>
+   <rect x="610" y="159" width="26" height="12" fill="#F7CB3B"/><rect x="610" y="171" width="26" height="6" fill="#2A5FA8"/><rect x="610" y="177" width="26" height="6" fill="#D6402F"/>
+   <rect x="640" y="159" width="26" height="12" fill="#F7CB3B"/><rect x="640" y="171" width="26" height="6" fill="#2A5FA8"/><rect x="640" y="177" width="26" height="6" fill="#D6402F"/>
+   <rect x="345" y="225" width="310" height="175" fill="#86CFC9"/>
+   <rect x="40" y="150" width="190" height="250" fill="#F6F1E7"/>
+   <rect x="770" y="40" width="190" height="360" fill="#F6F1E7"/>
+  </g>
+  <g class="ln">
+   <path d="M20 400H980"/>
+   <path d="M40 400V150H230V400"/><path d="M60 215h150v50H60zM100 280h70v120h-70z"/>
+   <path d="M40 150Q135 95 230 150"/>
+   <path d="M300 400V120H700V400"/><path d="M300 120L500 40 700 120"/>
+   <path d="M345 225H655V400"/><path d="M345 225V400"/>
+   <path d="M400 235V400M455 235V400M510 235V400M565 235V400M620 235V400"/>
+   <path d="M320 150H680V212H320z"/>
+   <path d="M770 400V40H960V400"/><path d="M770 40Q865 -15 960 40"/>
+   <path d="M790 90h150M790 130h150"/><path d="M810 150h110v100H810z"/><path d="M825 160v80M845 160v80M865 160v80M885 160v80M905 160v80"/>
+   <path d="M345 400l-12 0M330 392h-30M330 384h-30"/>
+  </g>
+  <text x="500" y="188" text-anchor="middle" font-family="Comfortaa" font-weight="700" font-size="24" fill="#F6F1E7" class="fill">Tu Rincón Favorito</text>
+  <text x="500" y="168" text-anchor="middle" font-family="Josefin Sans" font-size="11" letter-spacing="3" fill="#F6F1E7" class="fill">BAR RESTAURANT</text>
+ </svg>
+</header>
+<div class="flag"></div>
+
+<section class="teal" id="carta"><div class="wrap">
+ <h2>Cocina ecuatoriana, hecha en casa</h2>
+ <p class="intro">En el centro de Granollers, un semisótano íntimo y acogedor con sabor 100% latino. La cocina la lleva la esposa del propietario y las raciones son tan generosas que muchos clientes se van con tuppers.</p>
+ <h3 style="font-size:28px;margin:40px 0 18px">Lo más pedido</h3>
+ <ul class="dishes">
+  <li class="star">Encebollado, el plato estrella</li><li>Fritada mixta</li><li>Hornado</li><li>Churrasco</li><li>Ceviche de gambas</li><li>Arroz con menestra y chuleta de cerdo</li><li>Chaulafán</li><li>Guatita</li><li>Caldo de gallina</li><li>Arroz marinero</li><li>Albóndigas</li>
+ </ul>
+ <div class="menu"><b>12,50€</b><p><strong style="font:700 26px Comfortaa">Menú del día</strong><br>Económico y abundante, para comer bien sin gastar demasiado. Precio aproximado.</p></div>
+</div></section>
+
+<section class="dk" id="horario" style="background:var(--yellow)"><div class="wrap">
+ <h2>Horario</h2>
+ <table class="hours" aria-label="Horario semanal"><tbody id="hrs">
+  <tr data-d="1" class="off"><td>Lunes</td><td>Cerrado</td></tr>
+  <tr data-d="2" class="off"><td>Martes</td><td>Cerrado</td></tr>
+  <tr data-d="3" class="off"><td>Miércoles</td><td>Cerrado</td></tr>
+  <tr data-d="4"><td>Jueves</td><td>11:30–20:00</td></tr>
+  <tr data-d="5"><td>Viernes</td><td>11:00–22:00</td></tr>
+  <tr data-d="6"><td>Sábado</td><td>11:00–23:00</td></tr>
+  <tr data-d="0"><td>Domingo</td><td>11:00–23:00</td></tr>
+ </tbody></table>
+ <p style="margin-top:28px">Comedor interior, reservas, comida para llevar, desayuno, almuerzo y cena. También cerveza y vino.</p>
+</div></section>
+
+<section class="dark" id="opiniones"><div class="wrap">
+ <h2>Lo que dicen los clientes</h2>
+ <div class="score"><b>4,2</b><span style="font-size:22px">sobre 5 · 408 reseñas<br>Nota 8,4 en el directorio</span></div>
+ <div class="grid">
+  <div class="card"><h3>Lo que más gusta</h3><ul>
+   <li>Trato amable: Sindy, Byron, Nicole y Mel reciben elogios constantes.</li>
+   <li>Servicio rápido, incluso con mucha gente.</li>
+   <li>Buena relación calidad-precio y platos bien presentados.</li>
+   <li>Sabor auténtico, confirmado por clientes de Ecuador.</li></ul></div>
+  <div class="card"><h3>Conviene saber</h3><ul>
+   <li>A veces faltan platos: corviche, empanadas de queso o ciertos jugos. Pregunta antes de pedir.</li>
+   <li>Los precios pueden no incluir el IVA y hay quien menciona un cargo por el tupper.</li>
+   <li>La calidad del encebollado ha sido irregular según algunas reseñas.</li>
+   <li>El local puede ser ruidoso cuando el personal está en la barra.</li></ul></div>
+  <div class="card"><h3>Acceso</h3><ul>
+   <li>El local está en un semisótano y se baja por escaleras.</li>
+   <li>Puede ser incómodo con cochecitos o movilidad reducida.</li>
+   <li>Consta entrada accesible para sillas de ruedas.</li>
+   <li>Zona céntrica, con transporte público.</li></ul></div>
+ </div>
+</div></section>
+
+<section class="contact" id="contacto"><div class="wrap">
+ <h2>Ven a vernos</h2>
+ <p class="intro" style="font-size:clamp(22px,3vw,34px)">Carrer d'Agustí Viñamata, 79<br>08402 Granollers, Barcelona</p>
+ <p style="margin-top:26px">
+  <a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=Tu+Rinc%C3%B3n+Favorito+Carrer+d%27Agust%C3%AD+Vi%C3%B1amata+79+Granollers" target="_blank" rel="noopener">Cómo llegar</a>
+  <a class="btn" href="#horario">Ver horario</a>
+ </p>
+ <p style="margin-top:18px;opacity:.85">Reserva con antelación los fines de semana y consulta qué platos hay ese día.</p>
+</div></section>
+<footer>Tu Rincón Favorito · Bar restaurante ecuatoriano · Granollers</footer>
+
+<nav aria-label="Principal">
+ <a href="#carta">Carta</a><a href="#horario">Horario</a><a href="#opiniones">Opiniones</a><a href="#contacto">Cómo llegar</a>
+</nav>
+<script>
+(function(){
+ try{
+  var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Madrid',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()),o={};
+  p.forEach(function(x){o[x.type]=x.value});
+  var map={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6},d=map[o.weekday],m=(+o.hour%24)*60+(+o.minute);
+  var H={4:[690,1200],5:[660,1320],6:[660,1380],0:[660,1380]};
+  var r=document.querySelector('tr[data-d="'+d+'"]');if(r)r.classList.add('today');
+  var s=document.getElementById('status'),h=H[d],open=h&&m>=h[0]&&m<h[1];
+  s.classList.toggle('open',!!open);
+  s.lastChild.textContent=open?'Abierto ahora':(h?'Cerrado ahora':'Hoy cerrado');
+ }catch(e){}
+})();
+</script>
+</body>
+</html>
